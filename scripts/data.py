@@ -30,11 +30,14 @@ def main():
     phones = map_csv("../data/csv/cell-phones.csv", 0, 1, 2)
     internet = map_csv("../data/csv/internet-users.csv", 0, 1, 2)
 
+    for x in list(happiness.keys()):
+        save_fig(happiness[x], f"{x} Cantril Ladder Data", "../data/images/cantril")
+
+    for x in list(phones.keys()):
+        save_fig(phones[x], f"{x.upper()} Number of Cell Phones Possessed Per 100 People", "../data/images/phones")
+
     for x in list(internet.keys()):
         save_fig(internet[x], f"{x.upper()} Proportion of Internet Users", "../data/images/internet")
-
-    #plot_map(happiness, "Plot of Cantril Ladder Values")
-    #plt.show()
 
 if (__name__ == "__main__"):
     exec(open("./include.py").read())

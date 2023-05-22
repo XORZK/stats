@@ -16,6 +16,23 @@ def plot(values: list):
 
     plt.plot(x,y)
 
+def get_map(f: pd.core.frame.DataFrame, c_index: int, y_index: int, v_index: int) -> map:
+    mapped = {}
+    for i in range(0, len(f)):
+        row = f.loc[i]
+        country, year, value = row[c_index], row[y_index], row[v_index]
+
+        if (math.isnan(value)): continue
+
+        index = Index(year, value)
+
+        if (not country in mapped.keys()):
+            mapped[country] = [index]
+        else:
+            mapped[country].append(index)
+
+    return mapped
+
 def map_csv(fn: str, c_index: int, y_index: int, v_index: int) -> map:
     f = pd.read_csv(fn)
     mapped = get_map(f, c_index, y_index, v_index)
