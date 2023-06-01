@@ -7,6 +7,22 @@ class Index:
     def __str__(self):
         return f"{self.year}: {self.value}"
 
+def convert_index(mapped: map) -> map:
+    values = {}
+    for x in list(mapped.keys()):
+        values[x] = []
+        for val in mapped[x]:
+            values[x].append(val.value)
+        values[x].sort()
+    return values
+
+def pool(mapped: map) -> map:
+    mapped["pooled"] = []
+    for x in list(mapped.keys()):
+        if (x == "pooled"): continue
+        mapped["pooled"].extend(mapped[x])
+    return mapped
+
 def plot(values: list):
     x, y = [], []
 
