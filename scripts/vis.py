@@ -55,7 +55,7 @@ def main():
     phones = pool(map_csv("../data/csv/cell-phones.csv", 0, 1, 2))
     internet = pool(map_csv("../data/csv/internet-users.csv", 0, 1, 2))
 
-    yr = convert_index(yr_map(internet))
+    yr = convert_index(yr_map(happiness))
 
     merged_boxplot(yr, "Reported Life Satisfaction by Year", "Year", "Reported Life Satisfaction")
 
